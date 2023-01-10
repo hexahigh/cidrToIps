@@ -49,9 +49,12 @@ def main(argv):
 
   print 'Reading IP ranges in CIDR notation from file:', inputfile
   fo = open(inputfile, "r+")
+  sys.stdout = open('out.txt', 'w')
   for line in fo:
     for ip in IPNetwork(line):
       print '%s' % ip
 
 if __name__ == "__main__":
   main(sys.argv[1:])
+  
+sys.stdout.close()
